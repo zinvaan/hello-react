@@ -1,12 +1,10 @@
-import React, {Fragment} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
 function App() {
-  const name = "리액트";
+  const name = "리웩트";
   return(
     <div>
-      {name === '리액트'?(<h1>리액트입니다.</h1>):(<h2>리액트가 아닙니다.</h2>)};
+      {name === '리액트' && <h1>리액트 입니다.</h1>}
     </div>
   )
 }
