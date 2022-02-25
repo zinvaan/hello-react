@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import IterationSample from './IterationSample';
+import LifeCylceSameple from './LifeCylceSameple';
 
 class App extends Component{
   render(){
     return(
-      <IterationSample/>
+      <LifeCylceSameple/>
     );
   }
 }
