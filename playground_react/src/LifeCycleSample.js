@@ -35,7 +35,7 @@ class LifeCylceSameple extends Component{
     }
 
     handleClick=()=>{
-        this.state({
+        this.setState({
             number: this.state.number+1
         });
     }
@@ -49,7 +49,7 @@ class LifeCylceSameple extends Component{
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){
-        console.log('componemtDidUpdate', prevProps, prevState);
+        console.log('componentDidUpdate', prevProps, prevState);
         if(snapshot){
             console.log('업데이트되기 직전 색상: ', snapshot);
         }
@@ -58,7 +58,7 @@ class LifeCylceSameple extends Component{
     render(){
         console.log('render');
         const style={
-            color: this.props.colr
+            color: this.props.color
         };
 
         return(
