@@ -39,7 +39,7 @@ const Todos=({
       <form onSubmit={onSubmit}>
         <input value={input} onChange={onChange}/>
         <button type="submit">등록</button>
-      </form>
+      </form> 
       <div>
         {todos.map((todo)=>(
           <TodoItem
