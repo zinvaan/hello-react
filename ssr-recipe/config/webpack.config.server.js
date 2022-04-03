@@ -5,6 +5,7 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   mode: 'production',
@@ -109,5 +110,6 @@ module.exports = {
   },
   resolve: {
     modules: ['node_modules']
-  }
+  },
+  externals: [nodeExternals()]
 };
