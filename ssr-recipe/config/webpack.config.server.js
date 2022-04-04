@@ -1,11 +1,16 @@
-const paths = require('./paths');
-const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
+const paths = require( './paths' );
+const getCSSModuleLocalIdent = require( 'react-dev-utils/getCSSModuleLocalIdent' );
+const nodeExternals = require( 'webpack-node-externals' );
+const webpack = require( 'webpack' )
 
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
-const nodeExternals = require('webpack-node-externals');
+
+const publicUrl = paths.servedPath.slice( 0, -1 );
+const env = getClientEnvironment( publicUrl )
+
 
 module.exports = {
   mode: 'production',
@@ -24,14 +29,14 @@ module.exports = {
           {
             test: /\.(js|mjs|jsx|ts|tsx)$/,
             include: paths.appSrc,
-            loader: require.resolve('babel-loader'),
+            loader: require.resolve( 'babel-loader' ),
             options: {
               customize: require.resolve(
                 'babel-preset-react-app/webpack-overrides'
               ),
               plugins: [
                 [
-                  require.resolve('babel-plugin-named-asset-import'),
+                  require.resolve( 'babel-plugin-named-asset-import' ),
                   {
                     loaderMap: {
                       svg: {
@@ -51,7 +56,7 @@ module.exports = {
             test: cssRegex,
             exclude: cssModuleRegex,
             //exportOnlyLocals: true 옵션을 설정해야 실제 CSS파일을 생성하지 않음.
-            loader: require.resolve('css-loader'),
+            loader: require.resolve( 'css-loader' ),
             options: {
               exportOnlyLocals: true,
             }
@@ -59,7 +64,7 @@ module.exports = {
           //CSS Module을 위한 처리
           {
             test: cssModuleRegex,
-            loader: require.resolve('css-loader'),
+            loader: require.resolve( 'css-loader' ),
             options: {
               modules: true,
               exportOnlyLocals: true,
@@ -72,12 +77,12 @@ module.exports = {
             exclude: sassModuleRegex,
             use: [
               {
-                loader: require.resolve('css-loader'),
+                loader: require.resolve( 'css-loader' ),
                 options: {
                   exportOnlyLocals: true,
                 }
               },
-              require.resolve('sass-loader')
+              require.resolve( 'sass-loader' )
             ]
           },
           //sass + CSS Module을 위한 처리
@@ -86,14 +91,14 @@ module.exports = {
             exclude: sassModuleRegex,
             use: [
               {
-                loader: require.resolve('css-loader'),
+                loader: require.resolve( 'css-loader' ),
                 options: {
                   module: true,
                   exportOnlyLocals: true,
                   getLocalIdent: getCSSModuleLocalIdent,
                 }
               },
-              require.resolve('sass-loader')
+              require.resolve( 'sass-loader' )
             ]
           },
           //url-loader를 위한 설정
@@ -109,7 +114,10 @@ module.exports = {
     ]
   },
   resolve: {
-    modules: ['node_modules']
+    modules: [ 'node_modules' ]
   },
-  externals: [nodeExternals()]
+  externals: [ nodeExternals() ],
+  plugins: [
+    new webpack.DefinePlugin( env.stringified )
+  ],
 };
