@@ -104,7 +104,7 @@ module.exports = {
           },
           //url-loader를 위한 설정
           {
-            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\png$/],
+            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
             options: {
               emitFile: false,
               name: 'static/media/[name].[hash:8].[ext]'
