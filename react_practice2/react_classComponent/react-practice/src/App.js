@@ -31,21 +31,15 @@ class App extends Component {
     }
     return(
       <div className="App">
-        {/* <Subject 
+        <Subject 
           title={this.state.subject.title}
-          sub={this.state.subject.sub}>
-        </Subject> */}
-        <header>
-          {/* 화살표 함수에서 this는
-          클로저 함수처럼 바깥의 함수에 접근해서 this를 사용한다. */}
-          <h1><a href="/" onClick={(event)=>{
-            event.preventDefault();
+          sub={this.state.subject.sub}
+          onChangePage={function(){
             this.setState({
-              mode: 'welcome'
-            });
-          }}>{this.state.subject.title}</a></h1>
-          {this.state.subject.sub}
-        </header>
+              mode: 'welcome',
+            })
+          }.bind(this)}>
+        </Subject>
         <TOC data={this.state.contents}></TOC>
         <Content 
           title={_title} 
