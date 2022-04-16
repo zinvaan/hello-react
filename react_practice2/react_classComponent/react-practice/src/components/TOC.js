@@ -9,8 +9,8 @@ class TOC extends Component{
       lists.push(<li key={data[i].id}>
         <a 
           href={"/content"+data[i].id}
+          data-id = {data[i].id}
           onClick={function(event){
-            debugger;
             event.preventDefault();
             this.props.onChangePage(event.target.dataset.id);
           }.bind(this)}
