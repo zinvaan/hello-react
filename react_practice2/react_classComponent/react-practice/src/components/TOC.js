@@ -10,8 +10,9 @@ class TOC extends Component{
         <a 
           href={"/content"+data[i].id}
           onClick={function(event){
+            debugger;
             event.preventDefault();
-            this.props.onChangePage();
+            this.props.onChangePage(event.target.dataset.id);
           }.bind(this)}
         >
           {data[i].title}
