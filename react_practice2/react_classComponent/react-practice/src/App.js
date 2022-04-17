@@ -9,6 +9,8 @@ import './App.css';
 class App extends Component {
   constructor(props){
     super(props);
+    //↓ UI에 영향을 안주는 값은 state 값으로 안줘도 된다.
+    this.max_content_id = 3;
     this.state = {
       mode: 'create', 
       selected_content_id: 2,
@@ -48,6 +50,16 @@ class App extends Component {
       _article = <CreateContent onSubmit={function(_title, _desc){
         //setState를 통해서 새로운 content 값을 추가
         //add content to this.state.contents
+        this.max_content_id = this.max_content_id + 1;
+        // this.state.contents.push({
+        //   id: this.max_content_id, title: _title, desc: _desc
+        // });
+        let _contents = this.state.contents.concat({
+             id: this.max_content_id, title: _title, desc: _desc
+           });
+        this.setState({
+          contents: _contents,
+        });
       }.bind(this)}></CreateContent>
     }
     return(

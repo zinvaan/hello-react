@@ -12,7 +12,7 @@ class CreateContent extends Component{
           this.props.onSubmit(
             event.target.title.value,
             event.target.desc.value
-          )
+          );
         }.bind(this)}>
           <p><input type='text' name='title' placeholder='title' ></input></p>
           <p>
