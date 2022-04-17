@@ -10,7 +10,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      mode: 'read', 
+      mode: 'create', 
       selected_content_id: 2,
       subject: {title: 'WEB', sub: 'World Wide Web!'},
       welcome:{title: 'Welcome', desc:'Hello, React!'},
@@ -45,7 +45,10 @@ class App extends Component {
       // _desc = this.state.contents[0].desc;
     }
     else if(this.state.mode === 'create'){
-      _article = <CreateContent></CreateContent>
+      _article = <CreateContent onSubmit={function(_title, _desc){
+        //setState를 통해서 새로운 content 값을 추가
+        //add content to this.state.contents
+      }.bind(this)}></CreateContent>
     }
     return(
       <div className="App">
