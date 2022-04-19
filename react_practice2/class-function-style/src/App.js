@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 
 function App() {
@@ -11,10 +11,14 @@ function App() {
   );
 }
 
+let funcStyle = 'color:blue';
+let funcId = 0;
 function FuncComp(props){
-  let numberState = useState(props.initNumber);
-  let number = numberState[0];
-  let setNumber = numberState[1];
+  // let numberState = useState(props.initNumber);
+  // let number = numberState[0];
+  // let setNumber = numberState[1];
+
+  let [number, setNumber] = useState(props.initNumber)
 
   // let dateState = useState((new Date()).toString());
   // let _date = dateState[0];
@@ -22,6 +26,13 @@ function FuncComp(props){
 
   let [_date, setDate] = useState((new Date()).toString());
 
+  //side effect
+  useEffect(function(){
+    console.log('%cfunc => useEffect (componentDidMount & componentDidUpdate) A'+ (++funcId), funcStyle);
+    document.title = number + ':' + _date;
+  });
+
+  console.log('%cfunc => render'+ (++funcId), funcStyle);
   return(
     <div className="container">
       <h1>function style component</h1>
@@ -29,19 +40,42 @@ function FuncComp(props){
       <p>Date: {_date}</p>
       <input type="button" value="random" onClick={
           function(){
-            setDate((new Date).toString());
+            setNumber(Math.random());
+          }
+        } ></input>
+      <input type="button" value="date" onClick={
+          function(){
+            setDate((new Date()).toString());
           }
         } ></input>
     </div>
   );
 }
 
+let classStyle = 'color: red';
 class ClassComp extends React.Component{
   state={
     number: this.props.initNumber,
     date: (new Date()).toString(),
   }
+  componentWillMount(){
+    console.log('%cclass => componentWillMount', classStyle);
+  }
+  componentDidMount(){
+    console.log('%cclass => componentDidMount', classStyle);
+  }
+  shouldComponentUpdate(nextProps, nextState){
+    console.log('%cclass => shouldComponentUpdate', classStyle);
+    return true;
+  }
+  componentWillUpdate(nextProps, nextState){
+    console.log('%cclass => componentWillUpdate', classStyle);
+  }
+  componentDidUpdate(nextProps, nextState){
+    console.log('%cclass => componentDidUpdate', classStyle);
+  }
   render(){
+    console.log('%cclass => render', classStyle);
     return(
       <div className="container">
         <h2>class style component</h2>
