@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 function Home(){
   return(
@@ -34,9 +35,17 @@ function App(){
   return(
     <div>
       <h1>React Router DOM example</h1>
-      <Home></Home>
-      <Topics></Topics>
-      <Contact></Contact>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/topics">Topics</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <Switch>
+        <Route exact path="/"><Home></Home></Route>
+        <Route path="/topics"><Topics></Topics></Route>
+        <Route path="/contact"><Contact></Contact></Route>
+        <Route path="/">Not found</Route>
+      </Switch>
     </div>
   ); 
 }
@@ -44,7 +53,9 @@ function App(){
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+        <App /> 
+    </BrowserRouter>
   </React.StrictMode>
 );
 
