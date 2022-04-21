@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
 
 function Home(){
   return(
@@ -36,9 +36,9 @@ function App(){
     <div>
       <h1>React Router DOM example</h1>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/topics">Topics</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><NavLink exact to="/">Home</NavLink></li>
+        <li><NavLink to="/topics">Topics</NavLink></li>
+        <li><NavLink to="/contact">Contact</NavLink></li>
       </ul>
       <Switch>
         <Route exact path="/"><Home></Home></Route>
@@ -52,11 +52,9 @@ function App(){
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
     <BrowserRouter>
         <App /> 
     </BrowserRouter>
-  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
