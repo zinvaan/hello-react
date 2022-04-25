@@ -2,7 +2,7 @@
   padding: 1rem;
   display: flex;
   align-items: center;
-  //:nth-child(N)= 부모안에 모든 요소 중 N번째 요소
+  //↓ :nth-child(N)= 부모안에 모든 요소 중 N번째 요소
   &:nth-child(even){
     background: #f8f9fa;
   }
