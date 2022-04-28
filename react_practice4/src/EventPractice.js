@@ -8,7 +8,13 @@ class EventPractice extends Component{
   //   }
   // }
   state={
+    username:'',
     message:'',
+  }
+  constructor(props){
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
   handleChange(event){
     this.setState({
@@ -30,10 +36,9 @@ class EventPractice extends Component{
         name="message"
         placeholder="아무거나 입력해 보세요."
         value={this.state.message}
-        onChange={}
+        onChange={this.handleChange}
         />
-        <button onClick={()=>{
-        }}>Check</button>
+        <button onClick={this.handleClick}>Check</button>
       </div>
     );
   }
