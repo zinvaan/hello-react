@@ -22,4 +22,7 @@ const TodoListItem = ({todo, onRemove, onToggle}) => {
   );
 };
 
-export default TodoListItem;
+//TodoListItem props(todo, onRemove, onToggle)가 변경되지 않으면
+//리렌더링 되지 않는다.
+//React.memo(TodoListItem);
+export default React.memo(TodoListItem);
