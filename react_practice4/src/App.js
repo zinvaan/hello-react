@@ -1,22 +1,21 @@
-import React from 'react';
-import {Route, Link} from 'react-router-dom';
-import Home from './Home';
-import About from './About';
-import Profile from './Profile';
+import React, {useState} from 'react';
+import axios from 'axios';
 
 const App=()=>{
+  const [data, setData] = useState(null);
+  const onClick=()=>{
+    axios.get('http://jsonplaceholder.typicode.com/todos/1').then(response=>{
+      setData(response.data);
+    });
+  };
   return(
     <div>
-      <ul>
-        <li><Link to='/'>홈</Link></li>
-        <li><Link to='/about'>소개</Link></li>
-        <li><Link to='/profile/velopert'>velopert 프로필</Link></li>
-        <li><Link to='/profile/gildong'>gildong 프로필</Link></li>
-      </ul>
-      <Route path='/' component={Home} exact={true}/>
-      <Route path={['/about', '/info']} component={About}/>
-      <Route path='/profile/:username' component={Profile}/>
+      <div>
+        <button onClick={onClick}>불러오기</button>
+      </div>
+      {data && <textarea rows={7} value={JSON.stringify(data, null, 2)} readOnly={true} />}
     </div>
   )
-}
+};
+
 export default App;
