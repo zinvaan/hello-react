@@ -18,15 +18,13 @@ margin-top: 2rem;
   padding-right: 1rem;
 }
 `;
-
 const sampleArticle={
   title: '제목',
   description: '내용',
   url: 'https://google.com',
   urlToImage: 'https://via.placeholder.com/160',
 };
-
-const NewsList=()=>{
+const NewsList=({category})=>{
   const [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -35,8 +33,9 @@ const NewsList=()=>{
     const fetchData = async()=>{
       setLoading(true);
       try{
+        const query = ((category === 'all')?'':`&category=${category}`);
         const response = await axios.get(
-          'https://newsapi.org/v2/top-headlines?country=kr&apiKey=dc443e0f23e048bbb6fb6c7232281b3b',
+          `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=dc443e0f23e048bbb6fb6c7232281b3b`,
         );
         setArticles(response.data.articles);
       }
@@ -46,7 +45,7 @@ const NewsList=()=>{
       setLoading(false);
     };
     fetchData();
-  },[]);
+  },[category]);
 
   //대기 중 일 때
   if(loading){
