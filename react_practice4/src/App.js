@@ -1,10 +1,13 @@
 import React from 'react';
-import EventPractice from './EventPractice';
+import {Route} from 'react-router-dom';
+import NewsPage from './components/NewsPage';
 
-function App() {
-  return (
-    <EventPractice/>
-  )
-}
+const App=()=>{
+  return(
+    <div>
+      <Route path='/:category?' component={NewsPage}/>
+    </div>
+  );
+};
 
 export default App;
