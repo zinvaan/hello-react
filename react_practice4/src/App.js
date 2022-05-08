@@ -1,11 +1,13 @@
-import React from 'react';
-import {Route} from 'react-router-dom';
-import NewsPage from './components/NewsPage';
+import React from "react";
+import Counter from './components/Counter';
+import Todos from "./components/Todos";
 
 const App=()=>{
   return(
     <div>
-      <Route path='/:category?' component={NewsPage}/>
+      <Counter number={0}/>
+      <hr/>
+      <Todos/>
     </div>
   );
 };
