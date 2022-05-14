@@ -1,15 +1,12 @@
-import React from "react";
-import CounterContainer from "./containers/CounterContainer";
-import TodosContainer from "./containers/TodosContainer";
+import React from 'react';
+import Say from './Say';
 
-const App=()=>{
+const App = () => {
   return(
     <div>
-      <CounterContainer/>
-      <hr/>
-      <TodosContainer/>
+      <Say />
     </div>
-  );
+  )
 };
 
 export default App;
