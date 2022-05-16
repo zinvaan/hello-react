@@ -25,11 +25,11 @@ const IterationSample = () => {
     setNames(nextNames);
   };
   return (
-    <>
+    <div>
       <input value={inputText} onChange={onChange} />
       <button onClick={onClick}>추가</button>
       <ul>{namesList}</ul>
-    </>
+    </div>
   )
 };
 
