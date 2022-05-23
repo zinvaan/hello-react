@@ -18,7 +18,7 @@ export const insert = (text) => ({
   todo: {
     id: id++,
     text,
-    done: false,
+    done: false, // checked 유무
   },
 });
 export const toggle = (id) => ({

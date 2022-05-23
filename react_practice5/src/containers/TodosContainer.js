@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Todos from '../components/Todos';
 import { changeInput, insert, toggle, remove } from '../modules/todos';
-const TodoComponent = ({
+
+const TodosContainer = ({
   input,
   todos,
   changeInput,
@@ -15,7 +16,8 @@ const TodoComponent = ({
   return (
     <Todos
       input={input}
-      changeInput={changeInput}
+      todos={todos}
+      onChangeInput={changeInput}
       onInsert={insert}
       onToggle={toggle}
       onRemove={remove}
@@ -26,6 +28,15 @@ const mapStateToProps = (state) => ({
   input: state.todos.input,
   todos: state.todos.todos,
 });
-const mapDispatchToProps = (dipatch) => {};
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      changeInput,
+      insert,
+      toggle,
+      remove,
+    },
+    dispatch,
+  );
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(TodosContainer);
