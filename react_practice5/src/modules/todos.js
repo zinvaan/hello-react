@@ -1,67 +1,78 @@
+/*
+  Action 타입
+*/
 const CHANGE_INPUT = 'todos/CHANGE_INPUT'; //input value 변경
 const INSERT = 'todos/INSERT'; //새로운 todo 등록
 const TOGGLE = 'todos/TOGGLE'; //todo를 체크/체크해제
 const REMOVE = 'todos/REMOVE'; //todo를 제거
-
-export const changeInput=(input)=>({
+/*
+  Action 생성함수
+*/
+export const changeInput = (input) => ({
   type: CHANGE_INPUT,
   input,
 });
-let id=3;
-export const insert=(text)=>({
+let id = 3;
+export const insert = (text) => ({
   type: INSERT,
-  todo:{
+  todo: {
     id: id++,
     text,
     done: false,
-  }
+  },
 });
-export const toggle=(id)=>({
+export const toggle = (id) => ({
   type: TOGGLE,
   id,
 });
-export const remove=(id)=>({
+export const remove = (id) => ({
   type: REMOVE,
   id,
 });
-const initalState={
-  input:'',
-  todos:[
+/*
+  state 초깃값
+*/
+const initalState = {
+  input: '',
+  todos: [
     {
-      id:1,
+      id: 1,
       text: '리덕스 기초 배우기',
       done: true,
     },
     {
-      id:2,
+      id: 2,
       text: '리액트와 리덕스 사용하기',
       done: false,
-    }
-  ]
+    },
+  ],
 };
-function todos(state=initalState, action){
-  switch(action.type){
+/*
+  Reducer
+*/
+function todos(state = initalState, action) {
+  switch (action.type) {
     case CHANGE_INPUT:
-      return{
+      return {
         ...state,
         input: action.input,
       };
     case INSERT:
-      return{
+      return {
         ...state,
         todos: state.todos.concat(action.todo),
-      }
+      };
     case TOGGLE:
-      return{
+      return {
         ...state,
-        todos: state.todos.map((todo)=>(
-        (todo.id === action.id)?{...todo, done: !todo.done}:todo
-        ))
-      }
+        todos: state.todos.map((todo) =>
+          todo.id === action.id ? { ...todo, done: !todo.done } : todo,
+        ),
+      };
     case REMOVE:
-      return{
+      return {
         ...state,
-        todos: state.todos.filter((todo)=>(todo.id !== action.id))
+        todos: state.todos.filter((todo) => todo.id !== action.id),
       };
     default:
       return state;
