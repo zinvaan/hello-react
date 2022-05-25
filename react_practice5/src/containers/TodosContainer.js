@@ -10,6 +10,7 @@ const TodosContainer = () => {
     input: todos.input,
     todos: todos.todos,
   }));
+
   const dispatch = useDispatch();
   const onChangeInput = useCallback(
     (input) => dispatch(changeInput(input)),
