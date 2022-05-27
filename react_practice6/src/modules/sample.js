@@ -24,6 +24,7 @@ export const getPost = (id) => async (dispatch) => {
   dispatch({ type: GET_POST }); // 요청을 시작한 것을 알림.
   try {
     const response = await api.getPost(id);
+    console.log('response확인', response); //response.data 확인
     dispatch({
       type: GET_POST_SUCCESS,
       payload: response.data,
