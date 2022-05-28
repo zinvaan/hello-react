@@ -1,0 +1,24 @@
+.black-nav {
+  background: black;
+  width: 100%;
+  color: white;
+  display: flex;
+  padding-left: 20px;
+}
+div {
+  box-sizing: border-box;
+}
+.list {
+  padding-left: 20px;
+  text-align: left;
+  border-bottom: 1px solid grey;
+}
+.like-button {
+  cursor: pointer;
+}
+.modal {
+  background: #eee;
+  text-align: left;
+  padding: 20px;
+  margin-top: 20px;
+}
