@@ -1,10 +1,15 @@
 import './App.css';
+import TodoInsert from './components/TodoInsert';
+import TodoList from './components/TodoList';
+import TodoTemplate from './components/TodoTemplate';
 
 function App() {
   return (
     <div className="App">
-      hello World!
-      <button>Click</button>
+      <TodoTemplate>
+        <TodoInsert />
+        <TodoList />
+      </TodoTemplate>
     </div>
   );
 }
