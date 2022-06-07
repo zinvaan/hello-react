@@ -19,6 +19,7 @@
       flex: 1;
     }
     // 체크 되었을 때 보여 줄 스타일
+    // &는 부모선택자
     &.checked {
       svg {
         color: #22b8cf;
@@ -39,7 +40,6 @@
       color: #ff8787;
     }
   }
-
   &+& {
     border-top: 1px solid #dee2e6;
   }
