@@ -41,7 +41,10 @@ const Async = () => {
 
   order('0', production);
 */
-  let is_shop_open = true;
+
+  // Promise
+  /*
+let is_shop_open = true;
   let order = (work, time) => {
     return new Promise((resolve, reject) => {
       if (is_shop_open) {
@@ -53,6 +56,7 @@ const Async = () => {
       }
     });
   };
+
   // 화살표 함수를 사용해 한 줄로 작성할 경우 바로 return 되기 때문에
   // return 을 생략할 수 있으나,
   // 여러 줄로 작성 할 경우 return 을 반드시 명시해주어야 한다.
@@ -98,5 +102,21 @@ const Async = () => {
       console.log('Day ended. shop is closed.');
     });
 };
+*/
 
+  let is_shop_open = true;
+
+  const order = () => {
+    return new Promise((resolve, reject) => {
+      if(){
+        resolve()
+      }
+      else{
+        reject()
+      }
+    });
+  };
+  
+
+};
 export default Async;
