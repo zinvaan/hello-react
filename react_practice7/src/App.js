@@ -13,7 +13,7 @@ const App = () => {
   const nextId = useRef(4);
   // useRef는 objcet를 반환한다.
   // { current: 4(value값) }
-  // useRef를 통해 만든 object 안의 current 값이 실제 엘리먼트를 가리킨다.
+  // useRef를 통해 만든 object 안의 current 값이 실제 엘리먼트(값)를 가리킨다.
   const onInsert = useCallback(
     (text) => {
       const todo = {
